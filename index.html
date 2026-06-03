@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arvexion | Agencia de Páginas Web Profesionales en Puebla</title>
+    <meta name="description" content="Diseño, desarrollo y escalabilidad web premium en Puebla, México. Transformamos tu negocio en un motor de ventas de alta conversión con tecnología vanguardista.">
+    
+    <meta property="og:title" content="Arvexion | Diseño y Desarrollo Web Premium">
+    <meta property="og:description" content="Llevamos tu negocio al siguiente nivel digital con estrategias avanzadas de conversión y posicionamiento SEO.">
+    <meta property="og:image" content="https://arvexion.com.mx/og-image-placeholder.jpg">
+    <meta property="og:url" content="https://arvexion.com.mx">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           VARIABLES Y CONFIGURACIÓN GLOBAL
+           ========================================================================== */
+        :root {
+            --color-bg: #050508;
+            --color-bg-2: #0d0d14;
+            --color-bg-card: #111118;
+            --color-accent-cyan: #00E5FF;
+            --color-accent-violet: #A855F7;
+            --color-text-primary: #F0F4FF;
+            --color-text-muted: #6B7280;
+            --color-border: rgba(255, 255, 255, 0.07);
+            --color-glow-cyan: rgba(0, 229, 255, 0.15);
+            --font-headings: 'Syne', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text-primary);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-headings);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s var(--transition-smooth);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        section {
+            padding: 100px 24px;
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ==========================================================================
+           EFECTOS DE ANIMACIÓN Y UTILIDADES
+           ========================================================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Cursor Personalizado */
+        .custom-cursor {
+            width: 8px;
+            height: 8px;
+            background: var(--color-accent-cyan);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s;
+        }
+
+        .custom-cursor-follower {
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--color-accent-cyan);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s linear, background-color 0.3s;
+        }
+
+        /* Botón Ripple de alto impacto */
+        .btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s var(--transition-smooth);
+            border: none;
+        }
+
+        .btn-cyan {
+            background: var(--color-accent-cyan);
+            color: #000;
+            box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3);
+        }
+
+        .btn-cyan:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 229, 255, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-text-primary);
+            border: 1px solid var(--color-border);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--color-accent-cyan);
+            background: rgba(0, 229, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .btn .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-effect 0.6s linear;
+            background: rgba(255, 255, 255, 0.3);
+            pointer-events: none;
+        }
+
+        @keyframes ripple-effect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Botón de WhatsApp Flotante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        /* Secciones con Grid */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header span {
+            color: var(--color-accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 14px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            color: var(--color-text-primary);
+        }
+
+        /* ==========================================================================
+           1. NAVBAR STICKY
+           ========================================================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s var(--transition-smooth);
+            border-bottom: 1px solid transparent;
+        }
+
+        .navbar.scrolled {
+            padding: 14px 40px;
+            background: rgba(5, 5, 8, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .logo {
+            font-family: var(--font-headings);
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--color-text-primary);
+        }
+
+        .logo span {
+            color: var(--color-accent-cyan);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 15px;
+            color: var(--color-text-muted);
+            position: relative;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--color-text-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent-cyan);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            position: relative;
+        }
+
+        .nav-cta .btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            background: transparent;
+            border: 1px solid var(--color-accent-cyan);
+            color: var(--color-text-primary);
+        }
+
+        .nav-cta .btn:hover {
+            background: var(--color-accent-cyan);
+            color: #000;
+            box-shadow: 0 0 15px var(--color-glow-cyan);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Menú Móvil Overlay */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-bg);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            transform: translateY(-100%);
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .mobile-overlay.open {
+            transform: translateY(0);
+        }
+
+        .mobile-overlay a {
+            font-family: var(--font-headings);
+            font-size: 28px;
+            color: var(--color-text-muted);
+        }
+
+        .mobile-overlay a:hover {
+            color: var(--color-accent-cyan);
+        }
+
+        /* ==========================================================================
+           2. HERO SECTION
+           ========================================================================== */
+        .hero-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+            position: relative;
+            max-width: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 10% 80%, rgba(0, 229, 255, 0.05) 0%, transparent 50%);
+        }
+
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .badge-hero {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--color-border);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-content h1 {
+            font-size: 68px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #FFF 40%, #A855F7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            color: var(--color-text-muted);
+            max-width: 700px;
+            margin: 0 auto 32px auto;
+        }
+
+        .typewriter-box {
+            min-height: 30px;
+            font-size: 18px;
+            color: var(--color-accent-cyan);
+            font-weight: 500;
+            margin-bottom: 40px;
+        }
+
+        .typewriter-box::after {
+            content: '|';
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 60px;
+        }
+
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-accent-cyan), transparent);
+            opacity: 0.3;
+            animation: scan 6s linear infinite;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-text-muted);
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .scroll-indicator i {
+            font-size: 16px;
+            animation: bounce 2s infinite;
+            color: var(--color-accent-cyan);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+
+        /* ==========================================================================
+           3. PROPUESTA DE VALOR
+           ========================================================================== */
+        .val-central {
+            font-size: 24px;
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto 80px auto;
+            color: var(--color-text-primary);
+            font-weight: 400;
+        }
+
+        .val-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .val-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 40px 32px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .val-card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .val-icon {
+            font-size: 36px;
+            color: var(--color-accent-cyan);
+            margin-bottom: 24px;
+        }
+
+        .val-card h3 {
+            font-size: 22px;
+            margin-bottom: 14px;
+        }
+
+        .val-card p {
+            color: var(--color-text-muted);
+            font-size: 15px;
+        }
+
+        /* ==========================================================================
+           4. SERVICIOS (GRID 2x3 GLOW)
+           ========================================================================== */
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .serv-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 40px;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s var(--transition-smooth), border-color 0.4s;
+        }
+
+        .serv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(0, 229, 255, 0.08), transparent 40%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .serv-card:hover::before {
+            opacity: 1;
+        }
+
+        .serv-card:hover {
+            transform: scale(1.02);
+            border-color: var(--color-accent-cyan);
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.05);
+        }
+
+        .serv-icon {
+            font-size: 40px;
+            color: var(--color-accent-violet);
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .serv-card h3 {
+            font-size: 24px;
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .serv-card p {
+            color: var(--color-text-muted);
+            font-size: 15px;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .serv-tag {
+            display: inline-block;
+            background: rgba(0, 229, 255, 0.06);
+            border: 1px solid rgba(0, 229, 255, 0.15);
+            color: var(--color-accent-cyan);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ==========================================================================
+           5. ESTADÍSTICAS ANIMADAS
+           ========================================================================== */
+        .stats-section {
+            max-width: 100%;
+            background: linear-gradient(135deg, #09090f 0%, #050508 100%);
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item i {
+            font-size: 32px;
+            color: var(--color-accent-cyan);
+            margin-bottom: 16px;
+        }
+
+        .stat-number {
+            font-family: var(--font-headings);
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--color-text-primary);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--color-text-muted);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ==========================================================================
+           6. PROCESO DE TRABAJO (TIMELINE VERTICAL)
+           ========================================================================== */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 40px;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--color-accent-cyan), var(--color-accent-violet));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 90px;
+            margin-bottom: 60px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-number {
+            position: absolute;
+            left: 18px;
+            top: 0;
+            width: 46px;
+            height: 46px;
+            background: var(--color-bg);
+            border: 2px solid var(--color-accent-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-headings);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-accent-cyan);
+            z-index: 5;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+        }
+
+        .timeline-content {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        .timeline-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--color-text-primary);
+        }
+
+        .timeline-content p {
+            color: var(--color-text-muted);
+            font-size: 15px;
+        }
+
+        /* ==========================================================================
+           7. PORTAFOLIO / MOCKUP SECTION
+           ========================================================================== */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .port-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .port-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .mockup-header {
+            background: #1c1c24;
+            padding: 10px 16px;
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .mockup-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .mockup-dot:nth-child(1) { background: #ff5f56; }
+        .mockup-dot:nth-child(2) { background: #ffbd2e; }
+        .mockup-dot:nth-child(3) { background: #27c93f; }
+
+        .port-img-area {
+            background: #1a1a26;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: rgba(255,255,255,0.03);
+        }
+
+        .port-img-area i {
+            font-size: 120px;
+        }
+
+        .port-info {
+            padding: 28px;
+        }
+
+        .port-tech {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .port-tech span {
+            font-size: 11px;
+            background: rgba(168, 85, 247, 0.1);
+            color: var(--color-accent-violet);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .port-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .port-info p {
+            color: var(--color-text-muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .port-link {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-accent-cyan);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .port-link:hover i {
+            transform: translateX(4px);
+        }
+
+        .port-link i {
+            transition: transform 0.2s;
+        }
+
+        /* ==========================================================================
+           8. TESTIMONIOS
+           ========================================================================== */
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .testi-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 32px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .stars {
+            color: #FFAD00;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+
+        .testi-card p {
+            color: var(--color-text-primary);
+            font-size: 15px;
+            font-style: italic;
+            margin-bottom: 24px;
+        }
+
+        .testi-profile {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .avatar-init {
+            width: 44px;
+            height: 44px;
+            background: rgba(0, 229, 255, 0.1);
+            border: 1px solid var(--color-accent-cyan);
+            color: var(--color-accent-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .profile-info h4 {
+            font-size: 16px;
+            font-family: var(--font-body);
+            font-weight: 600;
+        }
+
+        .profile-info span {
+            font-size: 13px;
+            color: var(--color-text-muted);
+        }
+
+        /* ==========================================================================
+           9. LLAMADA A LA ACCIÓN CENTRAL (CTA)
+           ========================================================================== */
+        .cta-section {
+            max-width: 100%;
+            padding: 120px 24px;
+        }
+
+        .cta-box {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(17, 17, 24, 0.95) 0%, rgba(13, 13, 20, 0.95) 100%);
+            border: 1px solid var(--color-border);
+            padding: 80px 40px;
+            border-radius: 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta-box h2 {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .cta-box p {
+            color: var(--color-text-muted);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* ==========================================================================
+           10. PREGUNTAS FRECUENTES (ACORDEÓN)
+           ========================================================================== */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            margin-bottom: 16px;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .faq-trigger {
+            width: 100%;
+            padding: 24px;
+            background: transparent;
+            border: none;
+            color: var(--color-text-primary);
+            text-align: left;
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .faq-trigger i {
+            font-size: 16px;
+            color: var(--color-accent-cyan);
+            transition: transform 0.3s;
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+            padding: 0 24px;
+            color: var(--color-text-muted);
+            font-size: 15px;
+        }
+
+        .faq-item.open {
+            border-color: rgba(0, 229, 255, 0.3);
+        }
+
+        .faq-item.open .faq-trigger i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.open .faq-content {
+            max-height: 1000px;
+            padding-bottom: 24px;
+            transition: max-height 0.4s cubic-bezier(1, 0, 1, 0);
+        }
+
+        /* ==========================================================================
+           11. CONTACTO
+           ========================================================================== */
+        .contacto-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contacto-form {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--color-text-primary);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            background: #161622;
+            border: 1px solid var(--color-border);
+            padding: 14px;
+            border-radius: 8px;
+            color: #fff;
+            font-family: var(--font-body);
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-accent-cyan);
+        }
+
+        .contacto-info h3 {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .contacto-info > p {
+            color: var(--color-text-muted);
+            margin-bottom: 40px;
+        }
+
+        .info-link-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--color-border);
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .info-link-card i {
+            font-size: 24px;
+            color: var(--color-accent-cyan);
+        }
+
+        .info-link-card div p:first-child {
+            font-size: 13px;
+            color: var(--color-text-muted);
+        }
+
+        .info-link-card div p:last-child {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           12. FOOTER PREMIUM + WATERMARK
+           ========================================================================== */
+        footer {
+            background: #020204;
+            border-top: 1px solid var(--color-border);
+            padding: 80px 24px 40px 24px;
+            position: relative;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand p {
+            color: var(--color-text-muted);
+            font-size: 14px;
+            margin-top: 16px;
+            max-width: 250px;
+        }
+
+        .footer-col h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            font-size: 14px;
+            color: var(--color-text-muted);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--color-accent-cyan);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+            position: relative;
+        }
+
+        .footer-bottom p {
+            color: var(--color-text-muted);
+            font-size: 13px;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* Marca de agua premium obligatoria */
+        .footer-watermark {
+            font-family: var(--font-headings);
+            font-size: 100px;
+            font-weight: 800;
+            color: #ffffff;
+            opacity: 0.04;
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            user-select: none;
+            -webkit-user-select: none;
+            pointer-events: none;
+            white-space: nowrap;
+            letter-spacing: 4px;
+        }
+
+        /* ==========================================================================
+           RESPONSIVE DESIGN (MEDIA QUERIES)
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            .val-grid, .servicios-grid, .portfolio-grid, .testi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contacto-layout {
+                grid-template-columns: 1fr;
+            }
+            .footer-inner {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .hero-content h1 {
+                font-size: 54px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 20px;
+            }
+            .nav-links, .nav-cta {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero-content h1 {
+                font-size: 40px;
+            }
+            .hero-content p {
+                font-size: 16px;
+            }
+            .val-grid, .servicios-grid, .portfolio-grid, .testi-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item {
+                padding-left: 50px;
+            }
+            .timeline-number {
+                left: -2px;
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-watermark {
+                font-size: 60px;
+            }
+            .cta-box h2 {
+                font-size: 32px;
+            }
+            .section-header h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="custom-cursor" id="cursor"></div>
+    <div class="custom-cursor-follower" id="cursor-follower"></div>
+
+    <a href="https://wa.me/522229064834" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contacto por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <nav class="navbar" id="navbar">
+        <a href="#inicio" class="logo">ARVEXION<span>.</span></a>
+        <div class="nav-links">
+            <a href="#inicio" class="active">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#proceso">Proceso</a>
+            <a href="#portafolio">Portafolio</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+        <div class="nav-cta">
+            <a href="#contacto" class="btn">Cotizar ahora</a>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <div class="mobile-overlay" id="mobile-menu">
+        <a href="#inicio" class="mobile-link">Inicio</a>
+        <a href="#servicios" class="mobile-link">Servicios</a>
+        <a href="#proceso" class="mobile-link">Proceso</a>
+        <a href="#portafolio" class="mobile-link">Portafolio</a>
+        <a href="#nosotros" class="mobile-link">Nosotros</a>
+        <a href="#contacto" class="mobile-link">Contacto</a>
+    </div>
+
+    <header class="hero-container" id="inicio">
+        <canvas id="hero-canvas"></canvas>
+        <div class="scan-line"></div>
+        <div class="hero-content">
+            <div class="badge-hero">
+                <span>🚀</span> Agencia digital en Puebla, México
+            </div>
+            <h1>Llevamos tu negocio al siguiente nivel digital</h1>
+            <p>Somos Arvexion. Diseñamos, construimos y escalamos presencias digitales de alta gama que generan impacto de conversión real.</p>
+            
+            <div class="typewriter-box" id="typewriter"></div>
+
+            <div class="hero-actions">
+                <a href="#servicios" class="btn btn-cyan">Ver nuestros servicios</a>
+                <a href="#contacto" class="btn btn-outline">Hablar con un experto</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Explorar</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <section id="nosotros" class="reveal">
+        <div class="section-header">
+            <span>¿Por qué Arvexion?</span>
+            <h2>Ingeniería web con propósito estratégico</h2>
+        </div>
+        <p class="val-central">No solo hacemos páginas web. Ayudamos a negocios consolidados y en crecimiento a conquistar la nueva era digital combinando analítica, diseño avanzado de interacción y código impecable.</p>
+        
+        <div class="val-grid">
+            <div class="val-card">
+                <div class="val-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <h3>Diseño que impacta</h3>
+                <p>Cada interfaz y cada píxel se estructuran bajo un análisis riguroso de experiencia de usuario. Estética sofisticada alineada al valor de tu marca.</p>
+            </div>
+            <div class="val-card">
+                <div class="val-icon"><i class="fa-solid fa-code"></i></div>
+                <h3>Tecnología de vanguardia</h3>
+                <p>Desarrollamos código limpio, arquitecturas escalables y rendimiento web extremo que garantizan cargas instantáneas en móviles y escritorios.</p>
+            </div>
+            <div class="val-card">
+                <div class="val-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Resultados medibles</h3>
+                <p>Establecemos embudos de conversión integrados y rastreo métrico. Tu retorno de inversión y escalabilidad online es nuestra única prioridad.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="reveal">
+        <div class="section-header">
+            <span>Portafolio de Soluciones</span>
+            <h2>Ecosistemas digitales de alta gama</h2>
+        </div>
+        <div class="servicios-grid">
+            <div class="serv-card">
+                <div class="serv-icon"><i class="fa-solid fa-building"></i></div>
+                <h3>Páginas Web Corporativas</h3>
+                <p>Sitios robustos para empresas consolidadas que proyectan autoridad institucional y seriedad comercial premium en el mercado.</p>
+                <div class="serv-tag">Full-Stack HTML5/CSS3</div>
+            </div>
+            <div class="serv-card">
+                <div class="serv-icon"><i class="fa-solid fa-bullseye"></i></div>
+                <h3>Landing Pages de Alta Conversión</h3>
+                <p>Modelos de una sola página ultra optimizados, diseñados específicamente para maximizar leads en tus campañas de marketing digital.</p>
+                <div class="serv-tag">UI/UX Orientado a Ventas</div>
+            </div>
+            <div class="serv-card">
+                <div class="serv-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+                <h3>Diseño UX/UI Profesional</h3>
+                <p>Prototipado interactivo y modelado arquitectónico de pantallas antes de tirar la primera línea de código.</p>
+                <div class="serv-tag">Figma Prototyping</div>
+            </div>
+            <div class="serv-card">
+                <div class="serv-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                <h3>Posicionamiento SEO</h3>
+                <p>Optimización estructural técnica interna y en la nube para asegurar que tu marca aparezca orgánicamente en los primeros resultados de búsqueda.</p>
+                <div class="serv-tag">Google Core Web Vitals</div>
+            </div>
+            <div class="serv-card">
+                <div class="serv-icon"><i class="fa-solid fa-gears"></i></div>
+                <h3>Mantenimiento y Soporte Web</h3>
+                <p>Supervisión continua, parches de seguridad automatizados, copias de seguridad de datos y actualizaciones técnicas constantes sin interrupción.</p>
+                <div class="serv-tag">SLA 99.9% Estabilidad</div>
+            </div>
+            <div class="serv-card">
+                <div class="serv-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                <h3>E-Commerce Avanzado</h3>
+                <p>Pasarelas transaccionales ultra seguras y automatizadas orientadas a la experiencia de compra ágil y retención de usuarios.</p>
+                <div class="serv-tag">Stripe / PayPal API</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section reveal" id="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <i class="fa-solid fa-cubes"></i>
+                <div class="stat-number" data-target="50">0</div>
+                <div class="stat-label">+ Proyectos Entregados</div>
+            </div>
+            <div class="stat-item">
+                <i class="fa-solid fa-handshake"></i>
+                <div class="stat-number" data-target="30">0</div>
+                <div class="stat-label">+ Clientes Activos</div>
+            </div>
+            <div class="stat-item">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <div class="stat-number" data-target="98">0</div>
+                <div class="stat-label">% Satisfacción total</div>
+            </div>
+            <div class="stat-item">
+                <i class="fa-solid fa-calendar-check"></i>
+                <div class="stat-number" data-target="3">0</div>
+                <div class="stat-label">Años de Transformación</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proceso" class="reveal">
+        <div class="section-header">
+            <span>Metodología Ágil</span>
+            <h2>El camino hacia tu nueva identidad en línea</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-number">1</div>
+                <div class="timeline-content">
+                    <h3>Consulta Gratuita</h3>
+                    <p>Agendamos una videollamada para estudiar a fondo las dinámicas de tu negocio, necesidades comerciales reales y objetivos a corto y mediano plazo.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-number">2</div>
+                <div class="timeline-content">
+                    <h3>Estrategia y Propuesta</h3>
+                    <p>Diseñamos un mapa de ruta personalizado junto con un presupuesto transparente. Sin letras chiquitas ni costos ocultos sorpresivos.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-number">3</div>
+                <div class="timeline-content">
+                    <h3>Diseño UX/UI Avanzado</h3>
+                    <p>Esbozamos maquetas de alta fidelidad funcionales para validar flujos interactivos, jerarquías gráficas y elementos de experiencia de usuario de manera conjunta.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-number">4</div>
+                <div class="timeline-content">
+                    <h3>Desarrollo Optimizando Código</h3>
+                    <p>Nuestros ingenieros transforman la interfaz visual en código limpio de alto rendimiento listo para responder con velocidad extrema y estabilidad nativa.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-number">5</div>
+                <div class="timeline-content">
+                    <h3>Lanzamiento y Soporte</h3>
+                    <p>Desplegamos la infraestructura en servidores optimizados globales. Monitorizamos el comportamiento inicial y te acompañamos en la evolución del proyecto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portafolio" class="reveal">
+        <div class="section-header">
+            <span>Casos de Éxito</span>
+            <h2>Proyectos que hablan por sí solos</h2>
+        </div>
+        <div class="portfolio-grid">
+            <div class="port-card">
+                <div class="mockup-header">
+                    <div class="mockup-dot"></div>
+                    <div class="mockup-dot"></div>
+                    <div class="mockup-dot"></div>
+                </div>
+                <div class="port-img-area">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+                <div class="port-info">
+                    <div class="port-tech">
+                        <span>Landing Page</span>
+                        <span>Sistemas Reservas</span>
+                    </div>
+                    <h3>Restaurante La Hacienda</h3>
+                    <p>Rediseño web y sistema interactivo automatizado de reservaciones para una de las marcas gastronómicas más representativas de Puebla.</p>
+                    <a href="#contacto" class="port-link">Ver demostración <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="port-card">
+                <div class="mockup-header">
+                    <div class="mockup-dot"></div>
+                    <div class="mockup-dot"></div>
+                    <div class="mockup-dot"></div>
+                </div>
+                <div class="port-img-area">
+                    <i class="fa-solid fa-shirt"></i>
+                </div>
+                <div class="port-info">
+                    <div class="port-tech">
+                        <span>E-Commerce</span>
+                        <span>UI/UX Avanzado</span>
+                    </div>
+                    <h3>Moda Única MX</h3>
+                    <p>Tienda digital optimizada con pasarelas transaccionales fluidas para una boutique mexicana de moda exclusiva con inventario dinámico.</p>
+                    <a href="#contacto" class="port-link">Ver demostración <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="port-card">
+                <div class="mockup-header">
+                    <div class="mockup-dot"></div>
+                    <div class="mockup-dot"></div>
+                    <div class="mockup-dot"></div>
+                </div>
+                <div class="port-img-area">
+                    <i class="fa-solid fa-trowel-bricks"></i>
+                </div>
+                <div class="port-info">
+                    <div class="port-tech">
+                        <span>Sitio Corporativo</span>
+                        <span>SEO Técnico</span>
+                    </div>
+                    <h3>Constructora Élite</h3>
+                    <p>Plataforma web minimalista institucional enfocada en captación de inversionistas residenciales de alta gama en la zona de Angelópolis.</p>
+                    <a href="#contacto" class="port-link">Ver demostración <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reveal">
+        <div class="section-header">
+            <span>Resultados de Confianza</span>
+            <h2>Lo que dicen quienes ya crecieron con nosotros</h2>
+        </div>
+        <div class="testi-grid">
+            <div class="testi-card">
+                <div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"El sistema de reservas que Arvexion implementó duplicó nuestro flujo operativo los fines de semana. Entendieron el negocio gastronómico de inmediato en Puebla."</p>
+                </div>
+                <div class="testi-profile">
+                    <div class="avatar-init">AG</div>
+                    <div class="profile-info">
+                        <h4>Alejandro Gómez</h4>
+                        <span>La Hacienda Restaurantes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card">
+                <div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Nuestras ventas online crecieron un 140% los primeros tres meses tras el lanzamiento del e-commerce. La velocidad de carga móvil es impresionante."</p>
+                </div>
+                <div class="testi-profile">
+                    <div class="avatar-init">SM</div>
+                    <div class="profile-info">
+                        <h4>Sofía Mendoza</h4>
+                        <span>Fundadora de Moda Única</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card">
+                <div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Un equipo de ingenieros con visión comercial. El SEO local técnico nos posicionó por encima de competidores clave en Angelópolis en tiempo récord."</p>
+                </div>
+                <div class="testi-profile">
+                    <div class="avatar-init">CP</div>
+                    <div class="profile-info">
+                        <h4>Ing. Carlos Peralta</h4>
+                        <span>Socio Director Élite Corp</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section reveal">
+        <div class="cta-box">
+            <h2>¿Listo para conquistar la era digital?</h2>
+            <p>Agenda hoy mismo una sesión estratégica completamente gratuita para auditar tus canales de captación digital. Sin compromisos.</p>
+            <a href="https://wa.me/522229064834" target="_blank" rel="noopener noreferrer" class="btn btn-cyan btn-lg">
+                <i class="fab fa-whatsapp" style="margin-right: 10px; font-size: 18px;"></i> Hablar con Arvexion en WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <section class="reveal">
+        <div class="section-header">
+            <span>Resolviendo Dudas</span>
+            <h2>Preguntas Frecuentes</h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-trigger">
+                    <span>¿Cuánto tiempo tarda mi página web en estar lista?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-content">
+                    <p>Depende de la complejidad de la infraestructura. Una landing page estratégica de alto impacto se despliega típicamente entre 7 y 12 días hábiles, mientras que plataformas corporativas robustas o e-commerce avanzados toman entre 3 y 5 semanas de desarrollo estructurado.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-trigger">
+                    <span>¿Qué incluye el servicio de diseño web?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-content">
+                    <p>Ofrecemos soluciones llave en mano: wireframes iniciales interactivos, arquitectura UI/UX moderna, programación optimizada para buscadores (SEO técnico), adaptabilidad móvil completa (Responsive design), integraciones analíticas, hosting premium SSL y soporte directo continuo.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-trigger">
+                    <span>¿Puedo actualizar mi página yo mismo después?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-content">
+                    <p>Por supuesto. Construimos arquitecturas intuitivas y gestores dinámicos modulares para que puedas cambiar textos, actualizar catálogos o subir imágenes sin depender de un programador para cambios cotidianos elementales.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-trigger">
+                    <span>¿Hacen páginas para cualquier tipo de negocio?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-content">
+                    <p>Desarrollamos soluciones para el sector corporativo, comercial, industrial, inmobiliario, de servicios profesionales y tiendas minoristas en expansión. Evaluamos previamente cada caso para garantizar que nuestra tecnología aporte valor comercial real a tu sector.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-trigger">
+                    <span>¿Qué pasa si no quedo satisfecho con el diseño?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-content">
+                    <p>Nuestra metodología incluye fases explícitas de aprobación previas al código. Primero validamos mockups de interfaz en Figma y realizamos ajustes de común acuerdo; el desarrollo final solo inicia cuando estás completamente conforme con la propuesta visual estructurada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="reveal">
+        <div class="section-header">
+            <span>Hablemos de tu proyecto</span>
+            <h2>Inicia tu transformación hoy mismo</h2>
+        </div>
+        <div class="contacto-layout">
+            <form class="contacto-form" id="contactForm" onsubmit="event.preventDefault();">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Nombre completo</label>
+                        <input type="text" id="name" required placeholder="Ej. Roberto Sánchez">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Empresa</label>
+                        <input type="text" id="company" placeholder="Ej. Corporativo Angelópolis">
+                    </div>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="phone">Teléfono celular</label>
+                        <input type="tel" id="phone" required placeholder="Ej. 222 123 4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" required placeholder="Ej. roberto@empresa.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="project_type">Tipo de proyecto necesario</label>
+                    <select id="project_type">
+                        <option value="corporativo">Página Web Corporativa</option>
+                        <option value="landing">Landing Page de Alta Conversión</option>
+                        <option value="ecommerce">E-Commerce / Tienda en Línea</option>
+                        <option value="rediseño">Rediseño o Optimización Web</option>
+                        <option value="otro">Consultoría / Otro servicio</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="budget">Presupuesto estimado asignado</label>
+                    <select id="budget">
+                        <option value="range1">$10,000 - $20,000 MXN</option>
+                        <option value="range2">$20,000 - $45,000 MXN</option>
+                        <option value="range3">$45,000 - $80,000 MXN</option>
+                        <option value="range4">Más de $80,000 MXN</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Cuéntanos brevemente sobre tus metas comerciales</label>
+                    <textarea id="message" rows="4" placeholder="Describe qué deseas lograr con este nuevo sitio web corporativo..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-cyan" style="width: 100%;">Enviar solicitud de análisis estratégico</button>
+            </form>
+
+            <div class="contacto-info">
+                <h3>Conexión inmediata</h3>
+                <p>Nuestras oficinas centrales de desarrollo operan desde la ciudad de Puebla, atendiendo de manera directa a empresas en todo el territorio mexicano con procesos transparentes en la nube.</p>
+                
+                <div class="info-link-card">
+                    <i class="fa-solid fa-phone-volume"></i>
+                    <div>
+                        <p>Línea Directa Comercial</p>
+                        <p>222 906 4834</p>
+                    </div>
+                </div>
+
+                <div class="info-link-card">
+                    <i class="fa-solid fa-globe"></i>
+                    <div>
+                        <p>Portal Institucional Oficial</p>
+                        <p>arvexion.com.mx</p>
+                    </div>
+                </div>
+
+                <div class="info-link-card">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <div>
+                        <p>Ubicación Estratégica</p>
+                        <p>Puebla, México</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="#inicio" class="logo">ARVEXION<span>.</span></a>
+                <p>Construyendo la infraestructura digital estética y de alto rendimiento para las empresas del futuro.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#proceso">Metodología</a></li>
+                    <li><a href="#portafolio">Portafolio</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#servicios">Páginas Corporativas</a></li>
+                    <li><a href="#servicios">Landing Pages</a></li>
+                    <li><a href="#servicios">E-Commerce</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Recursos</h4>
+                <ul>
+                    <li><a href="#faq">Preguntas Frecuentes</a></li>
+                    <li><a href="#inicio">SLA de Rendimiento</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="https://wa.me/522229064834">Canal WhatsApp</a></li>
+                    <li><a href="#contacto">Formulario Directo</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Arvexion. Todos los derechos reservados. Puebla, México.</p>
+            <div class="footer-watermark">ARVEXION</div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Configuración de variables globales CSS en entorno dinámico
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            /* ------------------------------------------------------------------
+               A. MANEJO DE CURSOR PERSONALIZADO CON LAG SUAVE
+               ------------------------------------------------------------------ */
+            const cursor = document.getElementById('cursor');
+            const follower = document.getElementById('cursor-follower');
+            
+            // Ocultar cursor en móviles/pantallas táctiles para evitar conflictos UX
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                cursor.style.display = 'none';
+                follower.style.display = 'none';
+            } else {
+                let posX = 0, posY = 0;
+                let mouseX = 0, mouseY = 0;
+
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    cursor.style.left = mouseX + 'px';
+                    cursor.style.top = mouseY + 'px';
+                });
+
+                // Ciclo de animación para seguidor suave
+                function animateFollower() {
+                    posX += (mouseX - posX) * 0.15;
+                    posY += (mouseY - posY) * 0.15;
+                    follower.style.left = posX + 'px';
+                    follower.style.top = posY + 'px';
+                    requestAnimationFrame(animateFollower);
+                }
+                animateFollower();
+
+                // Efectos hover en enlaces y botones
+                document.querySelectorAll('a, button, .faq-trigger, input, select, textarea').forEach(el => {
+                    el.addEventListener('mouseenter', () => {
+                        cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
+                        cursor.style.background = 'var(--color-accent-violet)';
+                        follower.style.background = 'rgba(168, 85, 247, 0.1)';
+                        follower.style.borderColor = 'var(--color-accent-violet)';
+                    });
+                    el.addEventListener('mouseleave', () => {
+                        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                        cursor.style.background = 'var(--color-accent-cyan)';
+                        follower.style.background = 'transparent';
+                        follower.style.borderColor = 'var(--color-accent-cyan)';
+                    });
+                });
+            }
+
+            /* ------------------------------------------------------------------
+               B. CANVAS HERO: RED NEURAL DE PARTÍCULAS INTERCONECTADAS
+               ------------------------------------------------------------------ */
+            const canvas = document.getElementById('hero-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            const particles = [];
+            const particleCount = window.innerWidth < 768 ? 35 : 85;
+            const connectionDistance = 120;
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.6;
+                    this.vy = (Math.random() - 0.5) * 0.6;
+                    this.radius = Math.random() * 2 + 1;
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    if (this.x < 0 || this.x > width) this.vx *= -1;
+                    if (this.y < 0 || this.y > height) this.vy *= -1;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(0, 229, 255, 0.4)';
+                    ctx.fill();
+                }
+            }
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+
+            function drawLines() {
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
+                        if (dist < connectionDistance) {
+                            const alpha = (1 - dist / connectionDistance) * 0.18;
+                            ctx.strokeStyle = `rgba(0, 229, 255, ${alpha})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function loopParticles() {
+                ctx.clearRect(0, 0, width, height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                drawLines();
+                requestAnimationFrame(loopParticles);
+            }
+            loopParticles();
+
+
+            /* ------------------------------------------------------------------
+               C. TEXTO DEL HERO CON EFECTO TYPEWRITER ALTERNANTE
+               ------------------------------------------------------------------ */
+            const typewriterElement = document.getElementById('typewriter');
+            const phrases = [
+                "Diseñamos tu presencia digital.",
+                "Construimos tu crecimiento online.",
+                "Transformamos negocios en la era digital."
+            ];
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 70;
+
+            function handleTypewriter() {
+                const currentPhrase = phrases[phraseIndex];
+                
+                if (isDeleting) {
+                    typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                    typingSpeed = 30; 
+                } else {
+                    typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+                    typingSpeed = 80;
+                }
+
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    isDeleting = true;
+                    typingSpeed = 2000; // Pausa al final de escribir la frase completa
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    typingSpeed = 400; // Pausa corta antes de iniciar nueva frase
+                }
+
+                setTimeout(handleTypewriter, typingSpeed);
+            }
+            // Inicializar bucle typewriter
+            setTimeout(handleTypewriter, 1000);
+
+
+            /* ------------------------------------------------------------------
+               D. EFECTO GLOW INTERACTIVO EN HOVER (TARJETAS DE SERVICIOS)
+               ------------------------------------------------------------------ */
+            const cards = document.querySelectorAll('.serv-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+
+
+            /* ------------------------------------------------------------------
+               E. SCROLL REVEAL (INTERSECTION OBSERVER)
+               ------------------------------------------------------------------ */
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+
+            /* ------------------------------------------------------------------
+               F. CONTADORES ANIMADOS AL HACER SCROLL
+               ------------------------------------------------------------------ */
+            const statsNumbers = document.querySelectorAll('.stat-number');
+            let statsAnimated = false;
+
+            function animateCounters() {
+                statsNumbers.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    const duration = 2000; // duración total de la cuenta en milisegundos
+                    const startTime = performance.now();
+
+                    function updateCount(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        // Función de desaceleración (Ease-Out)
+                        const easeProgress = 1 - Math.pow(1 - progress, 3);
+                        const currentValue = Math.floor(easeProgress * target);
+                        
+                        stat.textContent = currentValue;
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            stat.textContent = target; // Asegura valor exacto final
+                        }
+                    }
+                    requestAnimationFrame(updateCount);
+                });
+            }
+
+            const statsSection = document.getElementById('stats');
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !statsAnimated) {
+                        animateCounters();
+                        statsAnimated = true;
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            statsObserver.observe(statsSection);
+
+
+            /* ------------------------------------------------------------------
+               G. ACORDEÓN INTERACTIVO DE PREGUNTAS FRECUENTES (FAQ)
+               ------------------------------------------------------------------ */
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const trigger = item.querySelector('.faq-trigger');
+                trigger.addEventListener('click', () => {
+                    const isOpen = item.classList.contains('open');
+                    
+                    // Cerrar otros acordeones abiertos para limpieza visual
+                    faqItems.forEach(i => i.classList.remove('open'));
+                    
+                    if (!isOpen) {
+                        item.classList.add('open');
+                    }
+                });
+            });
+
+
+            /* ------------------------------------------------------------------
+               H. CONTROL NAVBAR STICKY CON CAMBIO DE FONDO BLUR
+               ------------------------------------------------------------------ */
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+
+            /* ------------------------------------------------------------------
+               I. MENÚ HAMBURGUESA MÓVIL (OVERLAY ANIMADO)
+               ------------------------------------------------------------------ */
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            menuToggle.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.contains('open');
+                if (isOpen) {
+                    mobileMenu.classList.remove('open');
+                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                } else {
+                    mobileMenu.classList.add('open');
+                    menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+                }
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+
+
+            /* ------------------------------------------------------------------
+               J. BOTONES CON EFECTO RIPPLE DINÁMICO
+               ------------------------------------------------------------------ */
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    let ripple = document.createElement('span');
+                    ripple.classList.add('ripple');
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+
+                    this.appendChild(ripple);
+
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
