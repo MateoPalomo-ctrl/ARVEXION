@@ -177,7 +177,7 @@
             }
         }
 
-        /* Botón de Correo Flotante (Reemplazo de WhatsApp) */
+        /* Botón de Correo Flotante */
         .email-float {
             position: fixed;
             bottom: 30px;
@@ -527,7 +527,7 @@
         }
 
         /* ==========================================================================
-           4. SERVICIOS (GRID MODIFICADO 5 TARJETAS)
+           4. SERVICIOS (GRID MODIFICADO)
            ========================================================================== */
         .servicios-grid {
             display: grid;
@@ -923,7 +923,7 @@
         }
 
         /* ==========================================================================
-           10. PREGUNTAS FRECUENTES (ACORDEÓN MODIFICADO)
+           10. PREGUNTAS FRECUENTES
            ========================================================================== */
         .faq-container {
             max-width: 800px;
@@ -1054,6 +1054,13 @@
             padding: 24px;
             border-radius: 12px;
             margin-bottom: 20px;
+            text-decoration: none;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+
+        a.info-link-card:hover {
+            border-color: var(--color-accent-cyan);
+            background: rgba(0, 229, 255, 0.05);
         }
 
         .info-link-card i {
@@ -1069,6 +1076,7 @@
         .info-link-card div p:last-child {
             font-size: 18px;
             font-weight: 600;
+            color: var(--color-text-primary);
         }
 
         /* ==========================================================================
@@ -1596,8 +1604,6 @@
                     <p>Desarrollamos soluciones para el sector corporativo, comercial, industrial, inmobiliario, de servicios profesionales y tiendas minoristas en expansión. Evaluamos previamente cada caso para garantizar que nuestra tecnología aporte valor comercial real a tu sector.</p>
                 </div>
             </div>
-
-            
         </div>
     </section>
 
@@ -1657,23 +1663,31 @@
                 <h3>Conexión inmediata</h3>
                 <p>Nuestras oficinas centrales de desarrollo operan desde la ciudad de Puebla, atendiendo de manera directa a empresas en todo el territorio mexicano con procesos transparentes en la nube.</p>
                 
-                <div class="info-link-card">
+                <a href="mailto:arvexionweb@gmail.com" class="info-link-card">
                     <i class="fa-solid fa-envelope"></i>
                     <div>
                         <p>Correo de Contacto Directo</p>
                         <p>arvexionweb@gmail.com</p>
                     </div>
-                </div>
+                </a>
 
-                <div class="info-link-card">
+                <a href="https://arvexion.net" target="_blank" class="info-link-card">
                     <i class="fa-solid fa-globe"></i>
                     <div>
                         <p>Portal Institucional Oficial</p>
                         <p>arvexion.net</p>
                     </div>
-                </div>
+                </a>
 
-                <div class="info-link-card">
+                <a href="https://instagram.com/arvexionweb" target="_blank" class="info-link-card">
+                    <i class="fa-brands fa-instagram"></i>
+                    <div>
+                        <p>Instagram Oficial</p>
+                        <p>@arvexionweb</p>
+                    </div>
+                </a>
+
+                <div class="info-link-card" style="pointer-events: none;">
                     <i class="fa-solid fa-map-location-dot"></i>
                     <div>
                         <p>Ubicación Estratégica</p>
@@ -1717,6 +1731,7 @@
                 <h4>Contacto</h4>
                 <ul>
                     <li><a href="mailto:arvexionweb@gmail.com">Soporte Correo</a></li>
+                    <li><a href="https://instagram.com/arvexionweb" target="_blank">Instagram Oficial</a></li>
                     <li><a href="#contacto">Formulario Directo</a></li>
                 </ul>
             </div>
